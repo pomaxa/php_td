@@ -120,10 +120,11 @@ class baseUnit
         if($this->getArm())
         {
             //TODO:: implement weapon support
+            return $this->baseAttackPoints();
         }
         else
         {
-
+            return $this->baseAttackPoints();
         }
     }
 
@@ -141,11 +142,11 @@ class baseUnit
             $bonus = 18 - $luck;
             if($bonus > 1)
             {
-                $this->str * $bonus;
+                return $this->str * $bonus;
             }
             else
             {
-                $this->str;
+                return $this->str;
             }
 
         }

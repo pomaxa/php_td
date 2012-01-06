@@ -8,6 +8,7 @@
  */
 
 require_once 'Fight.php';
+require_once 'baseUnit.php';
 require_once 'unit.php';
 
 class Game
@@ -25,9 +26,9 @@ class Game
         $unit1 = new Unit(1);
         $unit2 = new Unit(2);
 
-        var_dump($unit1);
+        echo $unit1->getHp();
         echo "\n---------------\n";
-        var_dump($unit2);
+//        var_dump($unit2);
         echo "\n---------------\n";
 
         $f = new Fight();
@@ -35,13 +36,13 @@ class Game
         while($unit1->getHp() && $unit2->getHp())
         {
 
-            $unit1KickPoints = $unit1->getKickPoint();
-            $unit2KickPoints = $unit2->getKickPoint();
+//            $unit1KickPoints = $unit1->getAttackPoints();
+//            $unit2KickPoints = $unit2->getKickPoint();
 
-            $f->kick($unit1, $unit2);
-            $f->shot($unit2, $unit1);
+            $f->closeRange($unit1, $unit2);
+            $f->closeRange($unit2, $unit1);
 
-            echo " Unit-1: [ ". $unit1->getHp() ." ] kick -> ".$unit1KickPoints . " <- kick ".$unit2KickPoints." [ ".$unit2->getHp()."] \n";
+            echo " Unit-1: [ ". $unit1->getHp() ." ] | Unit-2 [ ".$unit2->getHp()."] \n";
 
             sleep(1);
         }

@@ -35,21 +35,6 @@ class Unit extends baseUnit
      * Battle info
      */
 
-
-    function getHp()
-    {
-        if($this->hp > 0 )
-            return $this->hp;
-
-        else
-            return 0;
-    }
-    function changeHp( $points)
-    {
-        //Logic for supper power resistence; :)? or not
-        $this->hp = $this->hp - (int)$points;
-    }
-
     function __construct($unitId)
     {
        $this->id=$unitId;
