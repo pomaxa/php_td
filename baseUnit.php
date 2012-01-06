@@ -6,64 +6,64 @@
  * Time: 12:05 AM
  * To change this template use File | Settings | File Templates.
  */
-class baseUnit
+abstract class baseUnit
 {
 
-    private $id;//unique identifier
+    protected $id;//unique identifier
     /**
      * @var
      */
-    private $baseMeleeDefence;
-    private $baseCloseRangeDefence;
-    private $baseLongRangeDefence;
+    protected $baseMeleeDefence;
+    protected $baseCloseRangeDefence;
+    protected $baseLongRangeDefence;
 
     /**
      * @var
      */
-    private $baseMeleeOffence;
-    private $baseCloseRangeOffence;
-    private $baseLongRangeOffence;
+    protected $baseMeleeOffence;
+    protected $baseCloseRangeOffence;
+    protected $baseLongRangeOffence;
 
     /**
      * Base points;
      */
-    private $str;
-    private $dex;
-    private $con;
-    private $int;
-    private $wis;
-    private $cha;
+    protected $str;
+    protected $dex;
+    protected $con;
+    protected $int;
+    protected $wis;
+    protected $cha;
 
 
-    private $speed; // 0 if not able to move;
+    protected $speed; // 0 if not able to move;
 
     /**
      * @var ArmObject... ?
      */
-    private $arm;
+    protected $arm;
 
     /**
      * @var int
      */
-    private $hp;
+    protected $hp;
 
 
 
     /**
      * Current point on map
      */
-    private $currentDisposition;
+    protected $currentDisposition;
     /**
      * Place to go... ?
      */
-    private $currentDestination;
+    protected $currentDestination;
 
 
 
     /**
      * currently aiming at - unitId;
      */
-    private $targetedObject;
+    protected $targetedObject;
 
 
     public function getDistanceTillTargetObject()
@@ -124,13 +124,23 @@ class baseUnit
         }
         else
         {
-            return $this->baseAttackPoints();
+
+            $bap = $this->baseAttackPoints();
+            if( $bap < $this->baseMeleeDefence )
+            {
+                return $this->baseMeleeDefence;
+            }
+            else
+            {
+                return $bap;
+            }
         }
     }
 
-    private function baseAttackPoints()
+    protected function baseAttackPoints()
     {
         $max = $this->dex * $this->str;
+
 
         $d = new Dice();
 
@@ -152,10 +162,32 @@ class baseUnit
         }
         else
         {
-            echo "\nmiss\n";
+            echo "\n * * * miss [luck = {$luck}]\n";
             return 0;
         }
 
     }
 
+
+    /**
+     * debug methods
+     */
+
+    public function unitInfo()
+    {
+        echo "\n";
+        echo "--------------------------------------------------------\n";
+        echo "-  base stats                                          -\n";
+        echo "- str: {$this->str}                                    -\n";
+        echo "- dex: {$this->dex}                                    -\n";
+        echo "- con: {$this->con}                                    -\n";
+        echo "- int: {$this->int}                                    -\n";
+        echo "- wis: {$this->wis}                                    -\n";
+        echo "- cha: {$this->cha}                                    -\n";
+        echo "--------------------------------------------------------\n";
+        echo "--------------------------------------------------------\n";
+        echo "--------------------------------------------------------\n";
+        echo "--------------------------------------------------------\n";
+        echo "--------------------------------------------------------\n";
+    }
 }

@@ -26,9 +26,10 @@ class Game
         $unit1 = new Unit(1);
         $unit2 = new Unit(2);
 
-        echo $unit1->getHp();
+
+        echo $unit1->unitInfo();
         echo "\n---------------\n";
-//        var_dump($unit2);
+        echo $unit2->unitInfo();
         echo "\n---------------\n";
 
         $f = new Fight();

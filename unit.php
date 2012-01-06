@@ -14,23 +14,6 @@ require_once 'dice.php';
 class Unit extends baseUnit
 {
 
-    private $id;
-    /**
-     * Base points;
-     */
-    private $str;
-    private $dex;
-    private $con;
-    private $int;
-    private $wis;
-    private $cha;
-
-    /**
-     * calculated values;
-     */
-    private $hp;
-
-
     /**
      * Battle info
      */
@@ -52,7 +35,10 @@ class Unit extends baseUnit
         * calculate exp
         */
        //TODO:: race/class param
+        echo (($this->con * $this->str) + ( $this->dex * $dice->r1d20() ) );
        $this->hp = ($this->con * $this->str) + ( $this->dex * $dice->r1d20() );
+
+        echo "\n\nhp: ".$this->hp;
     }
 
 }
