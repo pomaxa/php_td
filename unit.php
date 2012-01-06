@@ -11,7 +11,7 @@ require_once 'dice.php';
 
 
 
-class Unit
+class Unit extends baseUnit
 {
 
     private $id;

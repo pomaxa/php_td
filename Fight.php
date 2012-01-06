@@ -9,13 +9,28 @@
 
 class Fight
 {
-    function kick(Unit $atacker, Unit $defender)
+
+    function action(baseUnit $atacker, baseUnit $defender)
     {
-        $defender->changeHp($atacker->getKickPoint());
+        if($atacker->getDistanceTillTargetObject())
+        {
+            $this->longRange($atacker, $defender);
+        }
+        else
+        {
+            $this->closeRange($atacker, $defender);
+        }
     }
 
-    function shot(Unit $atacker, Unit $defender)
+
+
+    function closeRange(baseUnit $atacker, baseUnit $defender)
     {
-        $defender->changeHp($atacker->getKickPoint());
+        $defender->changeHp($atacker->getAttackPoints());
+    }
+
+    function longRange(baseUnit $atacker, baseUnit $defender)
+    {
+        $defender->changeHp($atacker->getAttackPoints());
     }
 }

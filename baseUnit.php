@@ -66,6 +66,12 @@ class baseUnit
     private $targetedObject;
 
 
+    public function getDistanceTillTargetObject()
+    {
+        //TODO:: calc range between $currentDisposition and targetObject
+
+        return rand(0,1);
+    }
 
 
     public function getHp()
@@ -105,5 +111,13 @@ class baseUnit
         $this->speed = $this->speed + $points;
     }
 
+    /**
+     * Override it for every unit;
+     * @return int
+     */
+    public function getAttackPoints()
+    {
+        return 1;
+    }
 
 }
