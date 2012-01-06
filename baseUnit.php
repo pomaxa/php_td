@@ -86,7 +86,7 @@ class baseUnit
     public function getArm()
     {
         if(empty($this->arm))
-            return null; //TODO:: check this moment with someone;
+            return false; //TODO:: check this moment with someone;
         return $this->arm;
     }
 
@@ -117,7 +117,44 @@ class baseUnit
      */
     public function getAttackPoints()
     {
-        return 1;
+        if($this->getArm())
+        {
+            //TODO:: implement weapon support
+        }
+        else
+        {
+
+        }
+    }
+
+    private function baseAttackPoints()
+    {
+        $max = $this->dex * $this->str;
+
+        $d = new Dice();
+
+        $luck = $d->r4d6k3();
+
+
+        if($luck >=10)
+        {
+            $bonus = 18 - $luck;
+            if($bonus > 1)
+            {
+                $this->str * $bonus;
+            }
+            else
+            {
+                $this->str;
+            }
+
+        }
+        else
+        {
+            echo "\nmiss\n";
+            return 0;
+        }
+
     }
 
 }

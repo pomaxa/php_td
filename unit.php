@@ -34,7 +34,7 @@ class Unit extends baseUnit
     /**
      * Battle info
      */
-    private $enemyId;
+
 
     function getHp()
     {
@@ -70,8 +70,4 @@ class Unit extends baseUnit
        $this->hp = ($this->con * $this->str) + ( $this->dex * $dice->r1d20() );
     }
 
-    function getKickPoint()
-    {
-        return (int) ($this->str + $this->con) ;
-    }
 }
